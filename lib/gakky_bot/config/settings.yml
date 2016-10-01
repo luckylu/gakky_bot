@@ -1,2 +1,4 @@
 twitter_oauth_token_url: https://api.twitter.com/oauth2/token
 user_timeline_url: https://api.twitter.com/1.1/statuses/user_timeline.json
+wordpress_media_url: http://localhost:8080/wp-json/wp/v2/media
+wordpress_post_url: http://localhost:8080/wp-json/wp/v2/posts

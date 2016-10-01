@@ -14,9 +14,8 @@ module GakkyBot
         end
 
         def setup
-          secrets = YAML.load_file(File.expand_path("../../config/secrets.yml", __FILE__))
-          encoded_secrets = Base64.strict_encode64("#{secrets['consumer_key']}:#{secrets['consumer_secret']}")
-          oauth_token_url = YAML.load_file(File.expand_path("../../config/settings.yml", __FILE__))['twitter_oauth_token_url']
+          encoded_secrets = Base64.strict_encode64("#{SECRETS['consumer_key']}:#{SECRETS['consumer_secret']}")
+          oauth_token_url = SETTINGS['twitter_oauth_token_url']
           [encoded_secrets, oauth_token_url]
         end
       end

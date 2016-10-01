@@ -1,2 +1,4 @@
 consumer_key: abcd
 consumer_secret: abcded
+wordpress_username: admin
+wordpress_key: 123456

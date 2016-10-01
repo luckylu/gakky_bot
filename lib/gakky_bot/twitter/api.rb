@@ -3,7 +3,7 @@ module GakkyBot
     class Api
       class << self
         def user_timeline(bearer_token, screen_name)
-          user_timeline_url = YAML.load_file(File.expand_path("../../config/settings.yml", __FILE__))['user_timeline_url']
+          user_timeline_url = SETTINGS['user_timeline_url']
           headers = {Authorization: "Bearer #{bearer_token}"}
           response = HTTParty.get("#{user_timeline_url}?screen_name=#{screen_name}", headers: headers)
         end
