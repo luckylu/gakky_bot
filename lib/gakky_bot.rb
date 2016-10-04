@@ -24,10 +24,12 @@ SETTINGS = YAML.load_file(File.expand_path("../gakky_bot/config/settings.yml", _
 module GakkyBot
   class << self
     def user_timeline
-      user_timeline =  Twitter::Api.user_timeline(Twitter::Oauth.bearer_token, 'lespros_sec1')
-      JSON.parse(user_timeline.body).each do |tweet|
-        next if Model::History.exists?(post_id: tweet['id_str'])
-        Wordpress::Api.post(tweet) if tweet['entities']['hashtags'].map{|x| x['text']}.include?("新垣結衣")
+      SETTINGS['screen_names'].each do |screen_name|
+        user_timeline =  Twitter::Api.user_timeline("#{screen_name}")
+        JSON.parse(user_timeline.body).each do |tweet|
+          next if Model::History.exists?(post_id: tweet['id_str'])
+          Wordpress::Api.post(tweet) if tweet['entities']['hashtags'].map{|x| x['text']}.include?("逃げ恥")
+        end
       end
     end
   end
