@@ -9,3 +9,4 @@
 /tmp/
 /lib/gakky_bot/config/secrets.yml
 /lib/gakky_bot/config/database.yml
+/lib/gakky_bot/config/settings.yml
