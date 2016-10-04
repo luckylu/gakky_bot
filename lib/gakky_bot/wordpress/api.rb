@@ -4,10 +4,9 @@ module GakkyBot
       class << self
         def post(tweet)
           image_url, content = parse(tweet)
-          puts tweet
           if image_url.first.present?
             media_url = media(image_url, tweet["id_str"])
-            body = media_url.map{|x| "<img src=#{x.first}>" }.join("<br/>") + "<br />" + content + "<br />" + "Source: <a href='https://twitter.com/i/web/status/#{tweet["id_str"]}' target='_blank'>https://twitter.com/i/web/status/#{tweet["id_str"]}</a>"
+            body = media_url.map{|x| "<a href=#{x.first}><img src=#{x.first}></a>" }.join("<br/>") + "<br />" + content + "<br />" + "Source: <a href='https://twitter.com/i/web/status/#{tweet["id_str"]}' target='_blank'>https://twitter.com/i/web/status/#{tweet["id_str"]}</a>"
             featured_media = media_url[0][1]
           else
             body = content + "<br />" + "Source: <a href='https://twitter.com/i/web/status/#{tweet["id_str"]}' target='_blank' >https://twitter.com/i/web/status/#{tweet["id_str"]}</a>"
