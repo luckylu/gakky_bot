@@ -13,7 +13,7 @@ module GakkyBot
             featured_media = SETTINGS['default_featured_media']
           end
           tweet_tags = tweet['entities']['hashtags'].map{|x| x['text']}
-          tags = tweet_tags.present? ? get_tags(tweet_tags) : SETTINGS['default_tags']
+          tags = SETTINGS['default_tags']
           categories = SETTINGS['default_category']
           title = content.truncate(20, omission: "...")
           res = RestClient.post(SETTINGS["wordpress_post_url"],{title: title, content: body, author: SETTINGS['default_author'], status: "publish", tags: tags, categories: categories, featured_media: featured_media}, setup_headers)
