@@ -6,4 +6,5 @@ wordpress_tags_url: http://localhost:8080/wp-json/wp/v2/tags
 default_featured_media: 8
 default_author: 2
 default_category: [3]
+default_tags: [1]
 screen_names: ['__YUIBOT']
