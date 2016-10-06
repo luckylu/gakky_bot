@@ -18,4 +18,3 @@ module GakkyBot
     end
   end
 end
-GakkyBot::WebScraper.extract("https://twitter.com/lespros_sec1/status/782012748947337217")

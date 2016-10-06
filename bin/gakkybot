@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'gakky_bot/cli'
+GakkyBot::CLI.start
