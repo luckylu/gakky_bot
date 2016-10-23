@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 env :PATH, ENV['PATH']
 file = File.expand_path("../../../gakky_bot.rb", __FILE__)
-every 8.hours do
+every 1.hour do
   command "ruby #{file}"
 end

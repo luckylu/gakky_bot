@@ -57,7 +57,7 @@ module GakkyBot
 
         def parse(tweet)
           if tweet["truncated"]
-            GakkyBot::WebScraper.extract(tweet["entities"]["urls"].first["expanded_url"])
+            GakkyBot::WebScraper.extract("https://twitter.com/i/web/status/#{tweet['id_str']}")
           else
             media = [tweet["entities"]["media"]&.first&.[]("media_url")]
             media.concat(tweet["extended_entities"]["media"].map{|x| x["media_url"]}) if tweet["extended_entities"].present?
