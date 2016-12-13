@@ -8,7 +8,8 @@ module GakkyBot
             media_url = media(image_url, tweet["id_str"])
             body = media_url.map{|x| "<a href=#{x.first}><img src=#{x.first}></a>" }.join("<br/>") + "<br />" + content + "<br />" + "Source: <a href='https://twitter.com/i/web/status/#{tweet["id_str"]}' target='_blank'>https://twitter.com/i/web/status/#{tweet["id_str"]}</a>"
             featured_media = media_url[0][1]
-          # else
+          else
+            return GakkyBot::Model::History.create(post_id: tweet["id_str"])
           #   body = content + "<br />" + "Source: <a href='https://twitter.com/i/web/status/#{tweet["id_str"]}' target='_blank' >https://twitter.com/i/web/status/#{tweet["id_str"]}</a>"
           #   featured_media = SETTINGS['default_featured_media']
           end
