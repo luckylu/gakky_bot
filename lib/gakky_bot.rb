@@ -18,7 +18,6 @@ require 'gakky_bot/model/history'
 require 'gakky_bot/wordpress/api'
 require 'gakky_bot/web_scraper'
 require 'gakky_bot/image'
-require 'gakky_bot/slack'
 
 ActiveRecord::Base.establish_connection(YAML.load_file(File.expand_path("../gakky_bot/config/database.yml", __FILE__)))
 SECRETS = YAML.load_file(File.expand_path("../gakky_bot/config/secrets.yml", __FILE__))
