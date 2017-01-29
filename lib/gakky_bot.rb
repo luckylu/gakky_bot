@@ -31,7 +31,7 @@ module GakkyBot
         user_timeline =  Twitter::Api.user_timeline("#{screen_name}")
         JSON.parse(user_timeline.body).each do |tweet|
           next if Model::History.exists?(post_id: tweet['id_str'])
-          Wordpress::Api.post(tweet) if tweet['entities']['hashtags'].map{|x| x['text']}.include?("新垣結衣")
+          Wordpress::Api.post(tweet) if tweet['text'] =~ /新垣結衣/
         end
       end
     end
