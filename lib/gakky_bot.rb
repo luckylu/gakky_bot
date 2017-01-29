@@ -17,6 +17,7 @@ require 'gakky_bot/model/history'
 require 'gakky_bot/wordpress/api'
 require 'gakky_bot/web_scraper'
 require 'gakky_bot/image'
+require 'gakky_bot/slack'
 
 ActiveRecord::Base.establish_connection(YAML.load_file(File.expand_path("../gakky_bot/config/database.yml", __FILE__)))
 SECRETS = YAML.load_file(File.expand_path("../gakky_bot/config/secrets.yml", __FILE__))
@@ -31,6 +32,7 @@ module GakkyBot
         user_timeline =  Twitter::Api.user_timeline("#{screen_name}")
         JSON.parse(user_timeline.body).each do |tweet|
           next if Model::History.exists?(post_id: tweet['id_str'])
+          $notifier.ping tweet
           Wordpress::Api.post(tweet) if tweet['text'] =~ /新垣結衣/
         end
       end
