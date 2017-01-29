@@ -3,6 +3,7 @@ module GakkyBot
     class Api
       class << self
         def post(tweet)
+          $notifier.ping "post tweet #{tweet}"
           image_url, content = parse(tweet)
           if image_url.first.present?
             media_url = media(image_url, tweet["id_str"])
