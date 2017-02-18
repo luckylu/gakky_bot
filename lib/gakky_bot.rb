@@ -44,5 +44,6 @@ end
 begin
   GakkyBot.user_timeline
 rescue => e
+  $notifier.ping(e)
   $logger.fatal(e)
 end
